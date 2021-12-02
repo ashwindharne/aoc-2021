@@ -1,6 +1,4 @@
-from pathlib import Path
-
-def part1(input_file: Path):
+def part1(input_file: str) -> int:
     counter = 0
     prev = float('inf')
     with open(input_file, 'r') as f:
@@ -11,7 +9,7 @@ def part1(input_file: Path):
             prev = curr
     return counter
 
-def part2(input_file: Path):
+def part2(input_file: str) -> int:
     counter = 0
     with open(input_file, 'r') as f:
         lines = f.readlines()
@@ -28,7 +26,7 @@ def part2(input_file: Path):
 
 
 if __name__ == '__main__':
-    input1 = Path('inputs/1.txt')
+    input1 = 'inputs/1.txt'
     print("On the first day of Christmas...")
     print(f"Part 1: {part1(input1)}")
     print(f"Part 2: {part2(input1)}")
