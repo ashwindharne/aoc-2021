@@ -9,6 +9,7 @@ def part1(input_file: str) -> int:
             prev = curr
     return counter
 
+
 def part2(input_file: str) -> int:
     counter = 0
     with open(input_file, 'r') as f:

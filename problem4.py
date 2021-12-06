@@ -9,7 +9,7 @@ class BingoBoard:
         for row in int_rows:
             for idx, num in enumerate(row):
                 self.cols[idx].add(num)
-        
+
     def mark_num(self, num: int) -> bool:
         """
         Marks the given number on the board. Returns whether the board is "done" or not.
@@ -26,12 +26,13 @@ class BingoBoard:
                 if not len(col):
                     self.done = True
         return self.done
-    
+
     def unmarked_sum(self) -> int:
         """
         Returns the sum of all the unmarked numbers on the board
         """
         return self.sum
+
 
 def construct_boards(lines: list[str]) -> list[BingoBoard]:
     """
@@ -70,7 +71,7 @@ def part2(input_file: str) -> int:
                 last_score = num * board.unmarked_sum()
         bingo_boards = [board for board in bingo_boards if not board.done]
     return last_score
-        
+
 
 if __name__ == '__main__':
     input = 'inputs/4.txt'

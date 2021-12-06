@@ -6,11 +6,13 @@ def part1(input_file: str) -> int:
         for idx, char in enumerate(line.rstrip()):
             if char == '1':
                 counters[idx] += 1
-    gamma_str = ''.join(['1' if counter > num_lines/2 else '0' for counter in counters])
+    gamma_str = ''.join(['1' if counter > num_lines /
+                        2 else '0' for counter in counters])
     gamma = int(gamma_str, 2)
     epsilon_str = ''.join(['1' if x == '0' else '0' for x in gamma_str])
     epsilon = int(epsilon_str, 2)
-    return  gamma * epsilon
+    return gamma * epsilon
+
 
 def part2(input_file: str) -> int:
     lines = [line.rstrip() for line in open(input_file, 'r')]
@@ -29,7 +31,6 @@ def part2(input_file: str) -> int:
         position += 1
     return int(lines[o2_indices[0]], 2) * int(lines[co2_indices[0]], 2)
 
-        
 
 def most_common_bit_at_position(position, lines, indices):
     counter = 0
@@ -38,6 +39,7 @@ def most_common_bit_at_position(position, lines, indices):
             counter += 1
     return '1' if counter >= len(indices)/2 else '0'
 
+
 def least_common_bit_at_position(position, lines, indices):
     counter = 0
     for index in indices:
@@ -45,8 +47,10 @@ def least_common_bit_at_position(position, lines, indices):
             counter += 1
     return '0' if counter >= len(indices)/2 else '1'
 
+
 def drop_indices(position, criteria_bit, indices, lines):
     return list(filter(lambda x: lines[x][position] == criteria_bit, indices))
+
 
 if __name__ == '__main__':
     input3 = 'inputs/3.txt'

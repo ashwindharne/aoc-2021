@@ -2,27 +2,31 @@ from enum import Enum
 from dataclasses import dataclass
 from collections import defaultdict
 
+
 @dataclass(eq=True, frozen=True)
 class Point:
     x: int
     y: int
+
 
 class Orientation(Enum):
     HORIZONTAL = 1
     VERTICAL = 2
     DIAGONAL = 3
 
+
 def bidirectional_range(start, stop):
     if start < stop:
         return list(range(start, stop + 1))
     return reversed(list(range(stop, start + 1)))
+
 
 class VentLine:
     @classmethod
     def from_str(self, s: str):
         split_s = s.split(' ')
         a_list = [int(x) for x in split_s[0].split(',')]
-        b_list = [int (x) for x in split_s[2].split(',')]
+        b_list = [int(x) for x in split_s[2].split(',')]
         return VentLine(Point(a_list[0], a_list[1]), Point(b_list[0], b_list[1]))
 
     def __init__(self, point_a: Point, point_b: Point):
@@ -51,7 +55,7 @@ class VentField:
     def __init__(self):
         self.vents: defaultdict[Point, int] = defaultdict(int)
         self.points_of_interest: set[Point] = set()
-    
+
     def add_line(self, line: VentLine, include_diagonals=False):
         if line.orientation == Orientation.DIAGONAL and not include_diagonals:
             return
@@ -60,8 +64,9 @@ class VentField:
             if self.vents[point] >= 2:
                 self.points_of_interest.add(point)
 
+
 def part1(input_file: str) -> int:
-    lines = [line.rstrip() for line in open(input_file, 'r')]
+    lines = [line.rstrip() for line in open(input_file, 'r', encoding='utf-8')]
     field = VentField()
     for line in lines:
         vent_line = VentLine.from_str(line)
@@ -76,7 +81,7 @@ def part2(input_file: str) -> int:
         vent_line = VentLine.from_str(line)
         field.add_line(vent_line, include_diagonals=True)
     return len(field.points_of_interest)
-        
+
 
 if __name__ == '__main__':
     input = 'inputs/5.txt'

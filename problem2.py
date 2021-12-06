@@ -3,7 +3,8 @@ def part1(input_file: str) -> int:
     horizontal = 0
     depth = 0
     f = open(input_file)
-    instructions = [(x.split(' ')[0], int(x.split(' ')[1])) for x in f.readlines()]
+    instructions = [(x.split(' ')[0], int(x.split(' ')[1]))
+                    for x in f.readlines()]
     for dir, val in instructions:
         if dir == 'forward':
             horizontal += val
@@ -15,12 +16,14 @@ def part1(input_file: str) -> int:
             print('panic!')
     return horizontal * depth
 
+
 def part2(input_file: str) -> int:
     horizontal = 0
     depth = 0
     aim = 0
     f = open(input_file)
-    instructions = [(x.split(' ')[0], int(x.split(' ')[1])) for x in f.readlines()]
+    instructions = [(x.split(' ')[0], int(x.split(' ')[1]))
+                    for x in f.readlines()]
     for dir, val in instructions:
         if dir == 'forward':
             horizontal += val
@@ -32,6 +35,7 @@ def part2(input_file: str) -> int:
         else:
             print('panic!')
     return horizontal * depth
+
 
 if __name__ == '__main__':
     print('On the second day of Christmas...')
