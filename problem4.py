@@ -64,7 +64,6 @@ def part2(input_file: str) -> int:
     numbers_drawn = [int(x) for x in lines[0].split(',')]
     bingo_boards = construct_boards(lines[2:])
     last_score = 0
-    removal_index = 0
     for num in numbers_drawn:
         for idx, board in enumerate(bingo_boards):
             if board.mark_num(num):
@@ -75,6 +74,6 @@ def part2(input_file: str) -> int:
 
 if __name__ == '__main__':
     input = 'inputs/4.txt'
-    print("On the third day of Christmas...")
+    print("On the fourth day of Christmas...")
     print(f"Part 1: {part1(input)}")
     print(f"Part 2: {part2(input)}")
