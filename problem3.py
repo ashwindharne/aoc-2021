@@ -25,7 +25,6 @@ def part2(input_file: str) -> int:
         position += 1
     position = 0
     while len(co2_indices) > 1:
-        # print(len(co2_indices))
         co2_bit = least_common_bit_at_position(position, lines, co2_indices)
         co2_indices = drop_indices(position, co2_bit, co2_indices, lines)
         position += 1

@@ -1,4 +1,4 @@
-num_segments_to_num = {
+NUM_SEGMENTS_TO_NUM = {
     2: 1,
     4: 4,
     3: 7,
@@ -12,8 +12,8 @@ def construct_num_mapping(scrambled_ten: list[str]) -> list[int]:
     six_seg_nums = []
     # Get the sets for one, four, seven, eight. Build lists for 2,3,5 and 0,6,9
     for num in scrambled_ten:
-        if len(num) in num_segments_to_num:
-            num_mapping[num_segments_to_num[len(num)]] = set(num)
+        if len(num) in NUM_SEGMENTS_TO_NUM:
+            num_mapping[NUM_SEGMENTS_TO_NUM[len(num)]] = set(num)
         elif len(num) == 5:
             five_seg_nums.append(set(num))
         elif len(num) == 6:
@@ -48,7 +48,7 @@ def part1(input_file: str) -> int:
         _, last_four = line.split('|')
         last_four = last_four.split()
         for num in last_four:
-            if len(num) in num_segments_to_num:
+            if len(num) in NUM_SEGMENTS_TO_NUM:
                 counter += 1
     return counter
 
