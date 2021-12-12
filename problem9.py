@@ -43,8 +43,8 @@ class HeightMap:
     def get_all_basin_points(self) -> set[tuple[int, int]]:
         point_set = set()
         for point in itertools.product(
-                list(range(0, self.max_row + 1)),
-                list(range(0, self.max_col + 1))):
+                range(0, self.max_row + 1),
+                range(0, self.max_col + 1)):
             if self.get_height(point) != 9:
                 point_set.add(point)
         return point_set
@@ -55,8 +55,8 @@ def part1(input_file: str) -> int:
     map = HeightMap(lines)
     sum = 0
     for point in itertools.product(
-            list(range(0, map.max_row + 1)),
-            list(range(0, map.max_col + 1))):
+            range(0, map.max_row + 1),
+            range(0, map.max_col + 1)):
         if map.is_lowest(point):
             sum += 1 + map.get_height(point)
     return sum
